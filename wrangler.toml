@@ -1,4 +1,4 @@
-name = "photography-perspective-lab"
+name = "perspective-lab-website"
 compatibility_date = "2026-09-13"
 pages_build_output_dir = "./dist"
 
