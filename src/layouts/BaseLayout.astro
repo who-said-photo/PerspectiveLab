@@ -1,0 +1,29 @@
+---
+import SEO from "../components/SEO.astro";
+import SiteSchema from "../components/SiteSchema.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import "../styles/global.css";
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+}
+---
+
+<!doctype html>
+<html lang="en-CA">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <SEO {...Astro.props} />
+    {!Astro.props.noindex && <SiteSchema />}
+  </head>
+  <body>
+    <Header />
+    <main id="main" class="wrap" tabindex="-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

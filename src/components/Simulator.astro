@@ -1,0 +1,179 @@
+---
+import { DEFAULTS, LIMITS } from "../lib/simulator/model";
+import { scene } from "../lib/simulator/render";
+import { metrics, summary } from "../lib/simulator/education";
+import "../styles/simulator.css";
+const controls = [
+  {
+    key: "distance" as const,
+    label: "Camera distance",
+    unit: "m",
+    hint: "Distance along the viewing axis to the rock’s plane.",
+  },
+  {
+    key: "focal" as const,
+    label: "Focal length",
+    unit: "mm",
+    hint: "24 mm is wide; 200 mm shows a narrower view.",
+  },
+  {
+    key: "height" as const,
+    label: "Camera height",
+    unit: "m",
+    hint: "Height above level ground. The camera does not tilt.",
+  },
+  {
+    key: "lateral" as const,
+    label: "Camera left / right",
+    unit: "m",
+    hint: "Negative is left; positive is right. Camera direction stays fixed.",
+  },
+];
+---
+
+<section
+  class="simulator"
+  id="perspective-lab"
+  aria-label="Interactive perspective simulator"
+>
+  <div class="sim-workspace">
+    <div class="sim-view">
+      <div class="sim-view-heading">
+        <h2>Your camera view</h2>
+        <span>36 × 24 mm sensor</span>
+      </div>
+      <div id="sim-scene" class="sim-scene" set:html={scene(DEFAULTS)} />
+      <p class="sim-legend">
+        Near: rock · Middle: tree · Far: mountain · Dashed line: horizon
+      </p>
+      <p id="sim-settings" class="small">
+        {summary(DEFAULTS)}
+      </p>
+      <p id="sim-metrics" class="sim-metrics">
+        {metrics(DEFAULTS)}
+      </p>
+      <div class="sim-explanation">
+        <h3>What changed?</h3>
+        <p id="sim-explanation">
+          Try changing focal length first. From a fixed position, it changes
+          framing without changing perspective.
+        </p>
+      </div>
+      <p
+        id="sim-status"
+        class="sr-only"
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+      ></p>
+    </div>
+    <fieldset id="sim-controls" disabled class="sim-controls">
+      <legend>Camera controls</legend>
+      <fieldset class="sim-modes">
+        <legend>Experiment mode</legend>
+        <label>
+          <input type="radio" name="sim-mode" value="fixed" checked /> Fixed
+          camera position
+        </label>
+        <label>
+          <input type="radio" name="sim-mode" value="matching" /> Matching
+          subject size
+        </label>
+      </fieldset>
+      <label class="sim-toggle">
+        <input type="checkbox" id="sim-matching" /> Maintain subject size (rock)
+      </label>
+      <p class="small">
+        The toggle and mode select the same behaviour. In fixed mode, zoom
+        leaves position unchanged; you can still move the camera manually.
+      </p>
+      {controls.map(({ key, label, unit, hint }) => (
+        <div class="sim-control">
+          <div class="sim-control-heading">
+            <label for={`sim-${key}`}>{label}</label>
+            <span>{unit}</span>
+          </div>
+          <div class="sim-inputs">
+            <input
+              id={`sim-${key}`}
+              type="range"
+              min={LIMITS[key].min}
+              max={LIMITS[key].max}
+              step={LIMITS[key].step}
+              value={DEFAULTS[key]}
+              data-control={key}
+              aria-describedby={`hint-${key}`}
+            />
+            <label class="sr-only" for={`number-${key}`}>
+              {label} numeric value ({unit})
+            </label>
+            <input
+              id={`number-${key}`}
+              type="number"
+              min={LIMITS[key].min}
+              max={LIMITS[key].max}
+              step={key === "distance" ? "any" : LIMITS[key].step}
+              value={DEFAULTS[key]}
+              data-control={key}
+              aria-describedby={`hint-${key}`}
+            />
+          </div>
+          <p id={`hint-${key}`} class="small">
+            {hint}
+          </p>
+        </div>
+      ))}
+      <div class="sim-actions">
+        <button type="button" id="sim-reset">
+          Reset camera
+        </button>
+        <button type="button" data-save="A">
+          Save comparison A
+        </button>
+        <button type="button" data-save="B">
+          Save comparison B
+        </button>
+      </div>
+      <p class="small">
+        Save two views below. Reset restores the camera and mode; saved
+        comparisons stay until you reload the page.
+      </p>
+    </fieldset>
+  </div>
+  <p id="sim-loading" class="small">
+    Controls are waiting for JavaScript. If they remain unavailable, the static
+    scene and explanation below still show the starting example.
+  </p>
+  <noscript>
+    <p class="callout">
+      JavaScript is off. The static view shows a 35 mm lens, 10 m to the rock’s
+      plane and a camera height of 1.6 m. Zooming from this position changes
+      framing, while moving closer increases the rock’s size relative to the
+      mountain.
+    </p>
+  </noscript>
+  <section class="sim-comparisons" aria-labelledby="comparison-heading">
+    <h2 id="comparison-heading">Compare two viewpoints</h2>
+    <p>
+      Use the same frame size to compare your saved settings. Some objects may
+      be cropped or outside the frame at extreme settings.
+    </p>
+    <div class="sim-comparison-grid">
+      {(["A", "B"] as const).map((slot) => (
+        <article class="sim-comparison" aria-label={`Comparison ${slot}`}>
+          <h3>Comparison {slot}</h3>
+          <div id={`comparison-${slot}`}>
+            <p>
+              No view saved. Choose “Save comparison {slot}” to keep the current
+              view here.
+            </p>
+          </div>
+        </article>
+      ))}
+    </div>
+  </section>
+</section>
+<script>
+  import { mountSimulator } from "../scripts/simulator";
+  mountSimulator();
+</script>

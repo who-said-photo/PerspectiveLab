@@ -1,0 +1,66 @@
+---
+import "../styles/learning.css";
+---
+
+<section id="quiz" class="quiz" aria-label="Perspective final exam">
+  <p id="quiz-loading">
+    The exam requires JavaScript. You can still read what it covers below and
+    explore the linked lessons.
+  </p>
+  <div id="quiz-app" hidden>
+    <div class="quiz-progress">
+      <p id="quiz-progress-text"></p>
+      <progress
+        id="quiz-progress"
+        max="15"
+        value="0"
+        aria-label="Questions answered"
+      ></progress>
+    </div>
+    <form id="quiz-form">
+      <fieldset id="quiz-question">
+        <legend id="quiz-prompt" tabindex="-1"></legend>
+        <div id="quiz-choices"></div>
+      </fieldset>
+      <button type="submit" id="quiz-submit">
+        Submit answer
+      </button>
+    </form>
+    <div
+      id="quiz-feedback"
+      role="status"
+      aria-live="polite"
+      aria-atomic="true"
+    ></div>
+    <nav class="learning-actions" aria-label="Question navigation">
+      <button type="button" id="quiz-previous">
+        Previous question
+      </button>
+      <button type="button" id="quiz-next">
+        Next question
+      </button>
+      <button type="button" id="quiz-results" hidden>
+        View results
+      </button>
+    </nav>
+    <section id="quiz-result-panel" hidden aria-labelledby="quiz-score">
+      <h2 id="quiz-score" tabindex="-1"></h2>
+      <p id="quiz-band"></p>
+      <div id="quiz-recommendations"></div>
+      <button type="button" id="quiz-review">
+        Review answers
+      </button>
+    </section>
+    <button type="button" id="quiz-retake">
+      Restart exam
+    </button>
+    <p class="small">
+      Answers stay only in this page until you restart or reload. Nothing is
+      sent to a server.
+    </p>
+  </div>
+</section>
+<script>
+  import { mountQuiz } from "../scripts/quiz";
+  mountQuiz();
+</script>

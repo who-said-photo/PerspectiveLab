@@ -1,0 +1,99 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+---
+
+<BaseLayout
+  title="Photography Perspective Lab"
+  description="Learn how camera position changes perspective. Explore distance, focal length and landscape composition in a practical photography learning lab."
+>
+  <section class="intro">
+    <p class="eyebrow">A different point of view</p>
+    <h1>
+      Photography
+      <br />
+      Perspective Lab
+    </h1>
+    <p class="lead">
+      The most powerful change to a photograph can be where you stand. Explore
+      the relationship between camera position, framing and depth.
+    </p>
+  </section>
+  <section class="feature" aria-labelledby="simulator-heading">
+    <div>
+      <p class="eyebrow">The perspective simulator</p>
+      <h2 id="simulator-heading">
+        One scene.
+        <br />
+        Different viewpoints.
+      </h2>
+      <p>
+        Camera position controls perspective. Focal length controls field of
+        view. Start with that distinction.
+      </p>
+      <a class="button" href="/perspective-simulator/">
+        Explore the simulator <span aria-hidden="true">↗</span>
+      </a>
+      <p class="small">Change your viewpoint and save two views to compare.</p>
+    </div>
+    <div class="diagram">
+      <p class="eyebrow">A simple depth study</p>
+      <div
+        class="depth-study"
+        role="img"
+        aria-label="Three equal-sized subjects at increasing distances have progressively smaller projected sizes. Diagram is illustrative, not to scale."
+      >
+        <div>
+          <span class="subject near"></span>
+          <b>Near</b>
+        </div>
+        <div>
+          <span class="subject middle"></span>
+          <b>Middle</b>
+        </div>
+        <div>
+          <span class="subject far"></span>
+          <b>Far</b>
+        </div>
+      </div>
+      <p>Equal size in the scene. Different size in the frame.</p>
+    </div>
+  </section>
+  <section class="learning">
+    <div class="section-heading">
+      <h2>Build your understanding</h2>
+      <span class="small">From observation to intention</span>
+    </div>
+    <div class="cards">
+      <a class="card" href="/how-perspective-works/">
+        <span class="eyebrow">01 / The essentials</span>
+        <h3>How perspective works</h3>
+        <p>
+          Understand why nearby objects look larger and why your viewpoint
+          matters.
+        </p>
+        <span>Read the introduction ↗</span>
+      </a>
+      <a class="card" href="/camera-distance-perspective/">
+        <span class="eyebrow">02 / Your position</span>
+        <h3>Move first. Look again.</h3>
+        <p>
+          See how camera distance changes the relationship between near and far.
+        </p>
+        <span>Explore camera distance ↗</span>
+      </a>
+      <a class="card" href="/focal-length-vs-perspective/">
+        <span class="eyebrow">03 / Your framing</span>
+        <h3>Separate lens from location</h3>
+        <p>
+          Distinguish a change in field of view from a change in perspective.
+        </p>
+        <span>Explore focal length ↗</span>
+      </a>
+    </div>
+  </section>
+  <div class="bottom-links">
+    <a href="/landscape-perspective/">Apply it to landscapes</a>
+    <a href="/perspective-challenges/">Perspective challenges</a>
+    <a href="/perspective-quiz/">Check your understanding</a>
+  </div>
+</BaseLayout>

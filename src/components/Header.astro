@@ -1,0 +1,44 @@
+---
+const links = [
+  { href: "/perspective-simulator/", label: "Simulator" },
+  { href: "/how-perspective-works/", label: "Learn" },
+  { href: "/perspective-challenges/", label: "Challenges" },
+  { href: "/perspective-quiz/", label: "Quiz" },
+  { href: "/perspective-resources/", label: "Resources" },
+];
+const active = (href: string) => Astro.url.pathname === href;
+---
+
+<a class="skip" href="#main">
+  Skip to content
+</a>
+<header class="site-header wrap">
+  <a class="brand" href="/" aria-label="Photography Perspective Lab home">
+    <span class="brand-icon" aria-hidden="true">
+      ◎
+    </span>
+    <span>
+      Photography<span class="brand-sub">Perspective Lab</span>
+    </span>
+  </a>
+  <nav class="desktop-nav" aria-label="Primary">
+    {links.map((link) => (
+      <a href={link.href} aria-current={active(link.href) ? "page" : undefined}>
+        {link.label}
+      </a>
+    ))}
+  </nav>
+  <details class="mobile-nav">
+    <summary>Menu</summary>
+    <nav aria-label="Mobile primary">
+      {links.map((link) => (
+        <a
+          href={link.href}
+          aria-current={active(link.href) ? "page" : undefined}
+        >
+          {link.label}
+        </a>
+      ))}
+    </nav>
+  </details>
+</header>

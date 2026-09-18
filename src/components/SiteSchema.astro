@@ -1,0 +1,46 @@
+---
+const organizationId = "https://whosaidphotography.com/#organization";
+const personId = "https://whosaidphotography.com/#person";
+const website = {
+  "@type": "WebSite",
+  name: "Photography Perspective Lab",
+  description:
+    "Learn how camera position and focal length affect landscape photographs through lessons, a perspective simulator, challenges and a quiz.",
+  inLanguage: "en-CA",
+  publisher: { "@id": organizationId },
+  author: { "@id": personId },
+  ...(Astro.site
+    ? { "@id": new URL("#website", Astro.site).href, url: Astro.site.href }
+    : {}),
+};
+const schema = {
+  "@context": "https://schema.org",
+  "@graph": [
+    website,
+    {
+      "@type": "Person",
+      "@id": personId,
+      name: "Bob Wild",
+      affiliation: { "@id": organizationId },
+    },
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: "Who Said Photography",
+      url: "https://whosaidphotography.com/",
+      sameAs: [
+        "https://www.facebook.com/WhoSaidPhotography",
+        "https://twitter.com/whosaidphoto",
+        "https://www.instagram.com/whosaidphotography/",
+        "https://www.youtube.com/@WhoSaidPhotography",
+      ],
+    },
+  ],
+};
+---
+
+<script
+  is:inline
+  type="application/ld+json"
+  set:html={JSON.stringify(schema).replaceAll("<", "\\u003c")}
+></script>

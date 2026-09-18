@@ -1,0 +1,137 @@
+---
+import LessonLayout from "../layouts/LessonLayout.astro";
+import Callout from "../components/Callout.astro";
+import QuestionAnswer from "../components/QuestionAnswer.astro";
+---
+
+<LessonLayout
+  title="How perspective works"
+  description="Perspective is how near and far objects relate in your photograph. Learn how your camera position changes their apparent size, spacing and overlap."
+>
+  <h2>Start with where you stand</h2>
+  <p>
+    Picture a rock beside a lake, with a mountain in the distance. Stand close
+    to the rock and it can fill much of your frame. Step back and the mountain
+    becomes more prominent compared with the rock.
+  </p>
+  <p>
+    Neither object has changed size. You've changed your viewpoint. That change
+    affects how the objects look in relation to each other, which is what we
+    mean by perspective.
+  </p>
+
+  <h2>Why nearby objects look larger</h2>
+  <p>
+    Hold one hand near your face and the other at arm's length. Your closer hand
+    looks larger, even though both hands are about the same size. The same idea
+    applies to objects in a photograph.
+  </p>
+  <p>
+    Distance matters most when something is close to the camera. If you move
+    from four metres away from a rock to two metres away, you halve that
+    distance. The same two-metre move barely changes your distance to a mountain
+    a kilometre away. That's why the rock grows much more than the mountain in
+    your frame.
+  </p>
+  <p>
+    Use this when you want a stronger foreground. Move closer, then check that
+    the rock, flowers or other nearby details don't hide something you want to
+    include. For a quieter foreground, try stepping back.
+  </p>
+
+  <h2>What changing focal length does</h2>
+  <p>
+    Focal length controls your field of view: how much of the scene your camera
+    includes. From the same position, a shorter focal length shows a wider view.
+    A longer focal length shows a narrower view.
+  </p>
+  <p>
+    Zoom in without moving and both the rock and mountain grow in the frame.
+    Their size relationship stays the same. You may crop out the rock entirely,
+    but cropping it out isn't a change in perspective.
+  </p>
+  <Callout title="Choose your position, then your framing">
+    <p>
+      Move the camera to change how objects relate. Once you like that
+      relationship, choose a focal length that includes the part of the scene
+      you want.
+    </p>
+  </Callout>
+
+  <h2>Why a longer lens can seem to bring the background closer</h2>
+  <p>
+    Suppose you use a longer focal length, then step back to keep the rock about
+    the same size in your photograph. The mountain now looks larger compared
+    with the rock. The scene may seem flatter, with less space between its
+    layers.
+  </p>
+  <p>
+    Stepping back caused that perspective change. The longer focal length helped
+    you keep similar framing. This combination is often called compression, but
+    the lens hasn't moved the mountain closer.
+  </p>
+
+  <h2>Move sideways or change height</h2>
+  <p>
+    Distance isn't your only choice. If a tree overlaps a mountain summit, take
+    a small step sideways. The nearby tree shifts across your view more than the
+    distant mountain, which can separate them.
+  </p>
+  <p>
+    Raising the camera may reveal a path hidden behind a rock. Lowering it may
+    hide that path or place the rock against a different part of the background.
+    Check the overlap instead of assuming that a lower viewpoint always gives
+    more depth.
+  </p>
+  <p>
+    Keep height and tilt separate. In this lab's level-camera model, raising the
+    camera changes foreground placement while the horizon stays centred. Tilt
+    downward to move the horizon higher in the frame and include more ground.
+  </p>
+
+  <h2>Try a simple comparison</h2>
+  <ol>
+    <li>Open the simulator and save its starting view as comparison A.</li>
+    <li>
+      Keep fixed camera position selected. Increase focal length and watch the
+      rock-to-mountain height ratio stay the same.
+    </li>
+    <li>
+      Reset the camera. Turn on maintain subject size, then increase focal
+      length again. Watch the camera move back and the ratio change.
+    </li>
+    <li>
+      Save comparison B. Compare the mountain's size while the rock stays
+      similarly framed.
+    </li>
+  </ol>
+  <p>
+    Try the same exercise outdoors with a nearby object and a distant feature.
+    Keep your camera pointed in the same direction when comparing focal lengths.
+    Make one change at a time so you can see what caused the difference.
+  </p>
+
+  <QuestionAnswer question="Does a wide-angle lens automatically exaggerate perspective?">
+    <p>
+      No. A close viewpoint creates a strong difference between near and far
+      objects. A wide-angle lens lets you include more of the scene from that
+      position. Changing to a wider lens without moving doesn't create a new
+      size relationship.
+    </p>
+  </QuestionAnswer>
+  <QuestionAnswer question="Is there one correct perspective for a landscape?">
+    <p>
+      No. A large foreground can lead attention into a scene, while a more
+      balanced size relationship can give the background greater presence.
+      Choose the viewpoint that helps show what caught your attention.
+    </p>
+  </QuestionAnswer>
+  <p>
+    <a href="/perspective-simulator/">Try the perspective simulator</a>
+    {" or "}
+    <a href="/camera-distance-perspective/">
+      explore camera distance and perspective
+    </a>
+    .
+  </p>
+</LessonLayout>

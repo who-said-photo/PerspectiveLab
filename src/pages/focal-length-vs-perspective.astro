@@ -1,0 +1,173 @@
+---
+import LessonLayout from "../layouts/LessonLayout.astro";
+import Callout from "../components/Callout.astro";
+import QuestionAnswer from "../components/QuestionAnswer.astro";
+---
+
+<LessonLayout
+  title="Focal length vs perspective"
+  description="Focal length changes how much of a scene you include. Camera position changes how near and far objects relate. Learn to control each when composing a photograph."
+>
+  <h2>Two choices that do different jobs</h2>
+  <p>
+    You're photographing a rock with a mountain behind it. Zoom in and both look
+    larger in the frame. Walk closer and the rock grows more than the mountain.
+    These changes may look similar at first, but they do different things.
+  </p>
+  <p>
+    Focal length controls field of view for a given sensor size. Perspective
+    describes the apparent size, position and overlap of objects seen from your
+    viewpoint. Understanding the difference helps you decide whether to move
+    your camera or adjust your lens.
+  </p>
+
+  <h2>What focal length changes</h2>
+  <p>
+    Focal length is measured in millimetres. On the same camera, a shorter focal
+    length includes a wider view. A longer focal length includes a narrower view
+    and makes objects appear larger within that frame.
+  </p>
+  <p>
+    In this lab, you can explore 24–200 mm with a simulated full-frame sensor.
+    At 24 mm, you'll include more of the landscape. At 200 mm, you'll see a much
+    smaller part of it. That range is useful for comparison, but photography
+    also uses lenses outside it.
+  </p>
+  <p>
+    Keep your camera in one place while changing focal length. The rock and
+    mountain enlarge together, so their height ratio stays the same. A longer
+    lens may crop the rock out, but removing it from view hasn't changed its
+    relationship with the mountain.
+  </p>
+
+  <h2>What moving the camera changes</h2>
+  <p>
+    Move closer to the rock and your distance to it changes by a large amount
+    compared with your distance to the mountain. The rock becomes more dominant.
+    Step back and the difference between foreground and background scale becomes
+    less pronounced.
+  </p>
+  <p>
+    Sideways movement changes overlap too. A nearby tree shifts across the frame
+    more than a distant summit. If the tree blocks the summit, moving sideways
+    can separate them. Zooming from the same position can't reveal what the tree
+    hides.
+  </p>
+  <Callout title="Choose your viewpoint before your focal length">
+    <p>
+      Move until the foreground and background work together. Then adjust focal
+      length to include the part of the scene you want.
+    </p>
+  </Callout>
+
+  <h2>Why longer lenses seem to compress a scene</h2>
+  <p>
+    Take a photograph near the rock with a short focal length. Then step back
+    and use a longer focal length until the rock looks about the same size in
+    the frame. The mountain now appears larger compared with the rock.
+  </p>
+  <p>
+    The layers may seem closer together. Photographers often call this
+    compression. Your move backwards caused the perspective change; the longer
+    focal length restored similar framing. The mountain hasn't moved, and the
+    lens hasn't shortened the space between objects.
+  </p>
+  <p>
+    To check this, compare photographs taken from the same position at different
+    focal lengths. Look at the same objects in both. Their relative sizes stay
+    consistent, even though the tighter photograph includes less of the scene.
+  </p>
+
+  <h2>Why wide views can have strong foregrounds</h2>
+  <p>
+    A wide-angle lens lets you work near a foreground subject while including
+    the background. That close viewpoint can make rocks, roots or flowers look
+    large beside a distant ridge. The wider view makes this composition
+    possible; your position creates the strong size difference.
+  </p>
+  <p>
+    Don't move close just because you're using a wide lens. Check whether the
+    foreground adds something useful. If it takes attention away from the
+    landscape, step back or choose another viewpoint before changing focal
+    length.
+  </p>
+
+  <h2>Keep sensor size in mind</h2>
+  <p>
+    The same focal length doesn't show the same field of view on every camera. A
+    smaller sensor records a smaller portion of the image projected by the lens.
+    That's why lens comparisons sometimes use a full-frame equivalent focal
+    length.
+  </p>
+  <p>
+    Equivalence helps compare framing across cameras. It doesn't mean the lens
+    has physically changed focal length. From the same viewpoint, changing
+    sensor size or cropping an image doesn't change the perspective
+    relationships within the area you keep.
+  </p>
+
+  <h2>Choose the change that solves the problem</h2>
+  <p>
+    If the mountain looks too small beside a foreground rock, stepping back can
+    help. If their size balance already looks right but there's too much empty
+    space around them, try a longer focal length from your current position.
+    These are different problems, so they need different adjustments.
+  </p>
+  <p>
+    A fixed focal length lens doesn't stop you controlling perspective. You can
+    still move, but keeping the same subject size may require cropping or a
+    different lens. Likewise, a zoom lens doesn't remove the need to move. Use
+    its framing choices after checking whether your viewpoint shows the
+    relationships you want.
+  </p>
+
+  <h2>Try both changes in the simulator</h2>
+  <ol>
+    <li>
+      Reset the simulator and leave fixed camera position selected. Save
+      comparison A.
+    </li>
+    <li>
+      Change focal length from 35 mm to 70 mm. The view narrows, but camera
+      distance and the rock-to-mountain height ratio stay unchanged.
+    </li>
+    <li>
+      Reset again. Turn on maintain subject size, then change to 70 mm. The
+      camera moves from 10 m to 20 m to keep the rock similarly framed.
+    </li>
+    <li>
+      Save comparison B. Compare the mountain's size relative to the rock. The
+      camera movement changed that relationship.
+    </li>
+  </ol>
+  <p>
+    Try smaller changes next. Watch the distance value as well as the image. If
+    the camera reaches a travel limit, it can't fully maintain the rock's size.
+    The simulator explains when that happens.
+  </p>
+
+  <QuestionAnswer question="Can cropping replace a longer lens?">
+    <p>
+      Cropping can produce a similar view from the same position, but it
+      discards pixels. A longer lens records the tighter framing across more of
+      the sensor. Final detail also depends on focus, lens quality and camera
+      movement. Neither choice changes perspective if the viewpoint stays fixed.
+    </p>
+  </QuestionAnswer>
+  <QuestionAnswer question="Is lens distortion the same as perspective?">
+    <p>
+      No. Lens distortion can bend straight lines, which this simulator doesn't
+      model. Perspective concerns how the scene projects from your viewpoint.
+      Keep those effects separate when comparing images, especially near the
+      edges of a wide view.
+    </p>
+  </QuestionAnswer>
+  <p>
+    <a href="/perspective-simulator/">Compare focal lengths in the simulator</a>
+    {" or "}
+    <a href="/camera-distance-perspective/">
+      explore how camera distance changes perspective
+    </a>
+    .
+  </p>
+</LessonLayout>

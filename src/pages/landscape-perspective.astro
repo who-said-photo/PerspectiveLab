@@ -1,0 +1,33 @@
+---
+import LessonLayout from "../layouts/LessonLayout.astro";
+import Callout from "../components/Callout.astro";
+import QuestionAnswer from "../components/QuestionAnswer.astro";
+---
+
+<LessonLayout
+  title="Landscape perspective"
+  description="Use your viewpoint to organise foreground, middle-ground and background. Small changes in camera position can make those layers clearer."
+>
+  <h2>Look for overlap before changing lenses</h2>
+  <p>
+    Move sideways to separate a foreground branch from a distant feature. Lower
+    the camera to explore a more prominent foreground, then check which objects
+    obscure each other.
+  </p>
+  <Callout title="Keep the distinction clear">
+    <p>
+      Choose your camera position for perspective, then choose your focal length
+      for framing.
+    </p>
+  </Callout>
+  <QuestionAnswer question="Does a lower camera always improve depth?">
+    <p>
+      No. A lower viewpoint can emphasise nearby objects, but it can also hide
+      useful middle-ground detail. Choose a position that supports the
+      relationships you want to show.
+    </p>
+  </QuestionAnswer>
+  <p>
+    <a href="/perspective-simulator/">Try the perspective simulator</a>
+  </p>
+</LessonLayout>

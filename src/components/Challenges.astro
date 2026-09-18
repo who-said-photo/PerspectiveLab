@@ -1,0 +1,95 @@
+---
+import { challenges } from "../lib/learning/challenges";
+import { LIMITS } from "../lib/simulator/model";
+import { scene } from "../lib/simulator/render";
+import "../styles/simulator.css";
+import "../styles/learning.css";
+const labels = {
+  distance: "Camera distance (m)",
+  focal: "Focal length (mm)",
+  height: "Camera height (m)",
+  lateral: "Camera left / right (m)",
+  tilt: "Camera tilt (degrees downward)",
+};
+---
+
+<div class="challenge-list">
+  {challenges.map((challenge, index) => (
+    <section
+      class="challenge"
+      data-challenge={challenge.id}
+      aria-labelledby={`title-${challenge.id}`}
+    >
+      <p class="eyebrow">Exercise {index + 1} / 5</p>
+      <h2 id={`title-${challenge.id}`}>{challenge.title}</h2>
+      <p>{challenge.objective}</p>
+      <div class="challenge-workspace">
+        <div>
+          <div
+            class="sim-scene"
+            data-scene
+            set:html={scene(challenge.initial)}
+          />
+          <p class="small">
+            Near: rock · Middle: tree · Far: mountain. Dashed line: horizon.
+          </p>
+          <p class="small" data-view-summary></p>
+        </div>
+        <div>
+          <fieldset disabled data-controls>
+            <legend>Adjust your viewpoint</legend>
+            {challenge.controls.map((key) => {
+              const limits =
+                key === "tilt" ? { min: -12, max: 12, step: 1 } : LIMITS[key];
+              return (
+                <label class="challenge-input" for={`${challenge.id}-${key}`}>
+                  <span>{labels[key]}</span>
+                  <input
+                    id={`${challenge.id}-${key}`}
+                    type="number"
+                    min={limits.min}
+                    max={limits.max}
+                    step={limits.step}
+                    value={challenge.initial[key] ?? 0}
+                    data-key={key}
+                  />
+                  <span class="small">
+                    Range {limits.min} to {limits.max}
+                    {key === "tilt" ? "; positive tilts down" : ""}
+                  </span>
+                </label>
+              );
+            })}
+            <div class="learning-actions">
+              <button type="button" data-check>
+                Check my decision
+              </button>
+              <button type="button" data-reset>
+                Reset exercise
+              </button>
+            </div>
+          </fieldset>
+          <p data-feedback role="status" aria-live="polite" aria-atomic="true">
+            Adjust the controls, then check the technical objective.
+          </p>
+        </div>
+      </div>
+      <details class="qa">
+        <summary>Recommended solution and trade-off</summary>
+        <div>
+          <p>{challenge.advice}</p>
+          <p>{challenge.tradeoff}</p>
+        </div>
+      </details>
+      <a href={challenge.lesson}>Review: {challenge.lessonTitle}</a>
+    </section>
+  ))}
+</div>
+<p data-challenge-loading class="small">
+  Controls require JavaScript. The starting scenes, objectives and recommended
+  solutions remain available without it.
+</p>
+<script>
+  import { mountChallenges } from "../scripts/challenges";
+  mountChallenges();
+</script>

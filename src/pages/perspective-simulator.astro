@@ -1,0 +1,90 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Simulator from "../components/Simulator.astro";
+import QuestionAnswer from "../components/QuestionAnswer.astro";
+import Recommendation from "../components/Recommendation.astro";
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  name: "Photography Perspective Lab: Perspective Simulator",
+  applicationCategory: "EducationalApplication",
+  publisher: { "@id": "https://whosaidphotography.com/#organization" },
+  operatingSystem: "Any",
+  browserRequirements: "Requires JavaScript for interactive controls",
+  description:
+    "An interactive landscape diagram comparing camera position, focal length and perspective.",
+  ...(Astro.site
+    ? { url: new URL("/perspective-simulator/", Astro.site).href }
+    : {}),
+};
+---
+
+<BaseLayout
+  title="Perspective simulator"
+  description="Compare camera distance, focal length and height in an interactive landscape. Keep position fixed or move to maintain subject size, then save two views."
+>
+  <Breadcrumb title="Perspective simulator" />
+  <div class="sim-intro">
+    <p class="eyebrow">Learning lab</p>
+    <h1>Perspective simulator</h1>
+    <p class="lead">
+      Camera position controls perspective. Focal length controls field of view.
+      Change one, watch the scene, then compare two views.
+    </p>
+  </div>
+  <Simulator />
+  <div class="sim-reading">
+    <h2>Begin with a fixed viewpoint</h2>
+    <p>
+      Imagine three equal-sized markers at different distances. The closest
+      appears largest. Zooming from the same position enlarges all three
+      together; moving the camera changes their size relationships.
+    </p>
+    <p>
+      In this scene the rock, tree and mountain have different real sizes.
+      Compare the rock-to-mountain height ratio as you change focal length, then
+      change camera distance.
+    </p>
+    <QuestionAnswer question="What does matching subject size preserve?">
+      <p>
+        The rock’s full projected height, even when it is cropped. A longer
+        focal length moves the camera back; a shorter focal length moves it
+        closer. Camera movement changes the perspective. Moving the distance
+        control manually establishes a new size reference. At the travel limits,
+        matching can no longer be exact.
+      </p>
+    </QuestionAnswer>
+    <QuestionAnswer question="Why does the horizon stay in the centre?">
+      <p>
+        The camera stays level. Changing height shifts ground features relative
+        to the horizon and changes which part of the foreground is visible.
+        Tilting a real camera would move the horizon within the frame; tilt is
+        not simulated here.
+      </p>
+    </QuestionAnswer>
+    <QuestionAnswer question="What are the model’s limits?">
+      <p>
+        This original SVG scene uses an ideal rectilinear camera with a 36 × 24
+        mm sensor. The rock is 1.5 m tall, the tree is 7 m tall and 18 m behind
+        the rock, and the mountain is 45 m tall and 180 m behind it. Objects are
+        flat illustrated planes, so walking sideways changes overlap but does
+        not reveal new surfaces. Lens distortion, focus blur, lighting changes
+        and camera tilt are not simulated. Extreme settings can crop objects
+        completely.
+      </p>
+    </QuestionAnswer>
+    <p>
+      <a href="/how-perspective-works/">Read how perspective works</a> ·{" "}
+      <a href="/focal-length-vs-perspective/">
+        Explore focal length vs perspective
+      </a>
+    </p>
+    <Recommendation />
+  </div>
+  <script
+    is:inline
+    type="application/ld+json"
+    set:html={JSON.stringify(schema)}
+  ></script>
+</BaseLayout>

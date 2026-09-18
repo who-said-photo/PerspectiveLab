@@ -1,0 +1,51 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Breadcrumb from "../components/Breadcrumb.astro";
+import Challenges from "../components/Challenges.astro";
+import Recommendation from "../components/Recommendation.astro";
+---
+
+<BaseLayout
+  title="Perspective challenges"
+  description="Practise five landscape perspective challenges: foreground power, mountain presence, separation, depth and horizon placement. Adjust your viewpoint and get feedback."
+>
+  <Breadcrumb title="Perspective challenges" />
+  <div class="learning-intro">
+    <p class="eyebrow">Learn by trying</p>
+    <h1>Perspective challenges</h1>
+    <p class="lead">
+      Five exercises, one landscape. Adjust your viewpoint, check the objective,
+      then compare your approach with a recommended solution.
+    </p>
+    <p>
+      These are measurable practice goals, not rules for every photograph.
+      Different compositions can succeed in different ways.
+    </p>
+    <nav class="bottom-links" aria-label="Challenge shortcuts">
+      <a href="#title-foreground">Foreground</a>
+      <a href="#title-mountain">Mountain</a>
+      <a href="#title-forest">Separation</a>
+      <a href="#title-depth">Depth</a>
+      <a href="#title-horizon">Horizon</a>
+    </nav>
+  </div>
+  <Challenges />
+  <div class="learning-reading">
+    <h2>Try an observation exercise</h2>
+    <p>
+      Look for two overlapping objects at different distances. Move a little to
+      one side and observe their separation. Notice how your position changes
+      the overlap without changing lenses.
+    </p>
+    <p>
+      The exercises use the same projection as the{" "}
+      <a href="/perspective-simulator/">perspective simulator</a>. Horizon
+      Control adds camera tilt. Positive tilt looks down; camera height alone
+      leaves a level horizon centred.
+    </p>
+    <p>
+      <a href="/perspective-quiz/">Take the 15-question final exam</a>
+    </p>
+    <Recommendation />
+  </div>
+</BaseLayout>
