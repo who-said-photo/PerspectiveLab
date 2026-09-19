@@ -12,7 +12,7 @@ const routes = [
   "perspective-quiz",
   "perspective-resources",
 ];
-test("release metadata and schema contain no accidental indexing blocks or fabricated claims", () => {
+test("prelaunch pages remain noindex and schema contains no fabricated claims", () => {
   for (const route of routes) {
     const html = fs.readFileSync(
       `dist/${route ? route + "/" : ""}index.html`,
@@ -20,8 +20,9 @@ test("release metadata and schema contain no accidental indexing blocks or fabri
     );
     assert.doesNotMatch(
       html,
-      /content="noindex"|FAQPage|aggregateRating|reviewCount|audit\.invalid|\u2014/,
+      /FAQPage|aggregateRating|reviewCount|audit\.invalid|\u2014/,
     );
+    assert.match(html, /name="robots" content="noindex"/);
     for (const property of [
       "og:title",
       "og:description",

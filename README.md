@@ -55,3 +55,8 @@ The challenges use src/lib/learning/challenges.ts and share the simulator model 
 ## Pre-deployment audit
 
 The local audit is complete. See [AUDIT_REPORT.md](AUDIT_REPORT.md) for fixes, evidence and remaining release actions. Run `npm run test:e2e` to include the new axe accessibility and route checks. The production origin remains required before publishing. For the current parent Git repository, use `PerspectiveLab` as the Cloudflare Pages root directory, `npm run build` as the build command, `dist` as output, and `NODE_VERSION=24.19.0`. This project has not been deployed.
+
+## Temporary indexing pause
+
+All pages currently output a robots noindex meta tag through src/components/SEO.astro. Keep indexingPaused set to true until the production domain is configured and launch is approved. To enable indexing, set indexingPaused to false, update the prelaunch indexing assertion in tests/audit.test.mjs, and rebuild. Pages explicitly marked noindex (including the 404 page) will remain excluded. Keep robots.txt crawlable so search engines can read the noindex directive.
+
