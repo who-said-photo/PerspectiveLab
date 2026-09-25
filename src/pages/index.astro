@@ -35,27 +35,14 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       </a>
       <p class="small">Change your viewpoint and save two views to compare.</p>
     </div>
-    <div class="diagram">
-      <p class="eyebrow">A simple depth study</p>
-      <div
-        class="depth-study"
-        role="img"
-        aria-label="Three equal-sized subjects at increasing distances have progressively smaller projected sizes. Diagram is illustrative, not to scale."
-      >
-        <div>
-          <span class="subject near"></span>
-          <b>Near</b>
-        </div>
-        <div>
-          <span class="subject middle"></span>
-          <b>Middle</b>
-        </div>
-        <div>
-          <span class="subject far"></span>
-          <b>Far</b>
-        </div>
-      </div>
-      <p>Equal size in the scene. Different size in the frame.</p>
+    <div class="depth-study-image">
+      <img
+        src="/images/depth-study.webp"
+        width="1774"
+        height="887"
+        alt="A simple depth study: the same-sized hiker appears large nearby, smaller in the middle distance and smallest far away beside a waterfall. Same size in the scene. Different size in the frame."
+        decoding="async"
+      />
     </div>
   </section>
   <section class="learning">
@@ -68,8 +55,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <span class="eyebrow">01 / The essentials</span>
         <h3>How perspective works</h3>
         <p>
-          Understand why nearby objects look larger and why your viewpoint
-          matters.
+          Nearby objects look larger because they're closer to your camera.
+          Learn how moving forwards, sideways or changing height affects their
+          size and overlap against the background. Use these changes to choose
+          what stands out in your photograph.
         </p>
         <span>Read the introduction ↗</span>
       </a>
@@ -77,7 +66,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <span class="eyebrow">02 / Your position</span>
         <h3>Move first. Look again.</h3>
         <p>
-          See how camera distance changes the relationship between near and far.
+          Move closer to give a foreground rock more presence. Step back to make
+          the mountain behind it look larger in comparison. Learn how to balance
+          near and far subjects, then compare viewpoints while keeping the
+          foreground similarly framed.
         </p>
         <span>Explore camera distance ↗</span>
       </a>
@@ -85,7 +77,10 @@ import BaseLayout from "../layouts/BaseLayout.astro";
         <span class="eyebrow">03 / Your framing</span>
         <h3>Separate lens from location</h3>
         <p>
-          Distinguish a change in field of view from a change in perspective.
+          Zooming changes how much of the scene you include. Moving changes how
+          objects relate to each other. Learn why a longer lens alone doesn't
+          compress a landscape, and when to adjust your focal length or choose
+          a different viewpoint.
         </p>
         <span>Explore focal length ↗</span>
       </a>

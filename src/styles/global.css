@@ -162,49 +162,15 @@ h3 {
   font-size: 0.88rem;
   color: var(--muted);
 }
-.diagram {
-  border: 1px solid #83988c;
-  padding: 25px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+.depth-study-image {
+  min-width: 0;
+  align-self: center;
 }
-.diagram p:last-child {
-  font-size: 0.88rem;
-  margin: 16px 0 0;
-}
-.depth-study {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-  gap: 12px;
-  padding: 20px 0;
-  border-bottom: 1px solid #83988c;
-}
-.depth-study > div {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 14px;
-}
-.subject {
+.depth-study-image img {
   display: block;
-  border: 2px solid var(--gold);
-  background: #e6c18022;
-  aspect-ratio: 1;
-}
-.near {
-  width: 95px;
-}
-.middle {
-  width: 58px;
-}
-.far {
-  width: 30px;
-}
-.depth-study b {
-  font-size: 0.88rem;
-  font-weight: 400;
+  width: 100%;
+  height: auto;
+  border: 1px solid #83988c;
 }
 .learning {
   padding: 44px 0 25px;
