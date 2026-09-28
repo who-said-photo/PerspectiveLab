@@ -70,21 +70,24 @@ h3 {
   border-bottom: 1px solid var(--line);
 }
 .brand {
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  display: block;
+  position: relative;
+  width: 315px;
+  max-width: 75%;
+  flex-shrink: 1;
+  aspect-ratio: 5 / 1;
+  overflow: hidden;
   text-decoration: none;
   font-weight: 650;
   line-height: 1.25;
 }
-.brand-icon {
-  font-size: 2.5rem;
-}
-.brand-sub {
+.brand img {
   display: block;
-  font-size: 0.88rem;
-  font-weight: 400;
-  letter-spacing: 0.06em;
+  position: absolute;
+  width: 100%;
+  height: auto;
+  top: 50%;
+  transform: translateY(-50%);
 }
 .desktop-nav {
   display: flex;

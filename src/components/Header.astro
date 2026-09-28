@@ -13,13 +13,9 @@ const active = (href: string) => Astro.url.pathname === href;
   Skip to content
 </a>
 <header class="site-header wrap">
-  <a class="brand" href="/" aria-label="Photography Perspective Lab home">
-    <span class="brand-icon" aria-hidden="true">
-      ◎
-    </span>
-    <span>
-      Photography<span class="brand-sub">Perspective Lab</span>
-    </span>
+  <a class="brand" href="/" aria-label="Photo Exhibits: Photography Perspective Lab home">
+    <img src="/images/photo-exhibits-logo.png" width="2016" height="780"
+      alt="Photo Exhibits: Photography Perspective Lab" />
   </a>
   <nav class="desktop-nav" aria-label="Primary">
     {links.map((link) => (
