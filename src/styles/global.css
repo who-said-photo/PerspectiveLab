@@ -391,8 +391,19 @@ main:focus {
 }
 @media (max-width: 760px) {
   .site-header {
-    flex-wrap: wrap;
+    flex-wrap: nowrap;
+    gap: 12px;
     padding-block: 12px;
+  }
+  .brand {
+    width: 240px;
+    max-width: calc(100% - 94px);
+  }
+  .mobile-nav {
+    flex: 0 0 auto;
+  }
+  .mobile-nav nav {
+    max-width: calc(100vw - 40px);
   }
 }
 /* Long headings and labels must still fit when browser text is enlarged. */
