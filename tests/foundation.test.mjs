@@ -47,11 +47,11 @@ test("all local links and assets resolve in the static output", () => {
       assert.ok(fs.existsSync(target), `Missing local target ${url}`);
     }
 });
-test("404 and script-free navigation are available", () => {
-  assert.match(
-    fs.readFileSync("dist/404.html", "utf8"),
-    /name="robots" content="noindex"/,
-  );
+test("404 redirects home, remains noindex, and script-free navigation is available", () => {
+  const notFound = fs.readFileSync("dist/404.html", "utf8");
+  assert.match(notFound, /name="robots" content="noindex"/);
+  assert.match(notFound, /http-equiv="refresh" content="0;url=\/"/);
+  assert.match(notFound, /window\.location\.replace\("\/"\)/);
   for (const html of pages) {
     assert.match(html, /<details class="mobile-nav"/);
     assert.match(html, /href="#main"/);

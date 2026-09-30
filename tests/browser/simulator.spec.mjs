@@ -125,9 +125,12 @@ test("desktop view, structured data and focus treatment", async ({ page }) => {
       .locator("#sim-focal")
       .evaluate((node) => getComputedStyle(node).outlineStyle),
   ).toBe("solid");
-  const schema = JSON.parse(
-    await page.locator('script[type="application/ld+json"]').textContent(),
-  );
+  const schemas = await page
+    .locator('script[type="application/ld+json"]')
+    .allTextContents();
+  const schema = schemas
+    .map(JSON.parse)
+    .find((item) => item["@type"] === "WebApplication");
   expect(schema["@type"]).toBe("WebApplication");
   expect(schema).not.toHaveProperty("aggregateRating");
   await page.screenshot({

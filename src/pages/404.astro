@@ -6,6 +6,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
   title="Page not found"
   description="This page could not be found. Return to Photography Perspective Lab."
   noindex
+  redirectTo="/"
 >
   <section class="intro">
     <p class="eyebrow">404 / Outside the frame</p>
@@ -15,4 +16,7 @@ import BaseLayout from "../layouts/BaseLayout.astro";
       Return to the lab
     </a>
   </section>
+  <script is:inline>
+    window.location.replace("/");
+  </script>
 </BaseLayout>

@@ -33,7 +33,7 @@ npm run preview
 - Configuration: `wrangler.toml`, static Pages output; no server adapter or bindings.
 - Set `SITE_URL` to the confirmed HTTPS production origin before a release build. Example PowerShell: `$env:SITE_URL = 'https://your-confirmed-domain.example'` (replace this example).
 
-Until an origin is confirmed, local builds omit canonical/OG URLs and produce an empty sitemap without invented domains. Production must set SITE_URL and verify the resulting canonical URLs, sitemap and robots. All nine routes are directory-style static pages. Cloudflare serves `404.html` for missing paths; no SPA fallback is configured. Security headers apply site-wide and fingerprinted assets have immutable caching. HTML uses the host's default caching.
+The production origin defaults to `https://photo-exhibits.com`; `SITE_URL` can override it for another HTTPS origin. Builds include canonical and Open Graph URLs plus a populated sitemap. All nine routes are directory-style static pages. Cloudflare serves `404.html` for missing paths, which keeps its 404/noindex response and returns visitors to the homepage with a browser redirect. Security headers apply site-wide and fingerprinted assets have immutable caching. HTML uses the host's default caching.
 
 Cloudflare reference: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/
 Astro configuration: https://docs.astro.build/en/guides/configuring-astro/
@@ -58,5 +58,4 @@ The local audit is complete. See [AUDIT_REPORT.md](AUDIT_REPORT.md) for fixes, e
 
 ## Temporary indexing pause
 
-All pages currently output a robots noindex meta tag through src/components/SEO.astro. Keep indexingPaused set to true until the production domain is configured and launch is approved. To enable indexing, set indexingPaused to false, update the prelaunch indexing assertion in tests/audit.test.mjs, and rebuild. Pages explicitly marked noindex (including the 404 page) will remain excluded. Keep robots.txt crawlable so search engines can read the noindex directive.
-
+All content pages are indexable. Pages explicitly marked `noindex`, including the 404 utility page, remain excluded. Keep `robots.txt` crawlable so search engines can discover the sitemap and read page directives.

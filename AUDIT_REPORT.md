@@ -43,7 +43,7 @@ Changed areas: astro.config.mjs; package.json and lockfile; src/components/SEO.a
 | Configuration file        | wrangler.toml                                                                   |
 | Output type               | Static Astro directory routes; no SSR adapter, database or bindings             |
 
-Existing public/_headers provides nosniff, frame denial, referrer and permissions policies; hashed /_astro assets have one-year immutable caching. HTML uses Cloudflare's default caching. No custom redirects are necessary. Cloudflare Pages serves directory index routes and normalizes HTML/index URLs; the top-level 404.html prevents SPA fallback. Local tests do not emulate Cloudflare's header/redirect implementation.
+Existing public/_headers provides nosniff, frame denial, referrer and permissions policies; hashed /_astro assets have one-year immutable caching. HTML uses Cloudflare's default caching. Cloudflare Pages serves directory index routes and normalizes HTML/index URLs; the top-level 404.html prevents SPA fallback, remains noindex and returns visitors to the homepage. Local tests do not emulate Cloudflare's custom 404 response handling.
 
 References: [Cloudflare Astro guide](https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/) and [Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/).
 

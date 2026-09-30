@@ -210,11 +210,15 @@ h3 {
   border-top: 1px solid var(--line);
 }
 .site-footer {
-  border-top: 1px solid var(--line);
+  background: #e2ecdf;
+  color: var(--ink);
+  border-top: 1px solid #cbdac7;
   padding: 28px 0;
+  text-align: center;
 }
 .site-footer p {
   max-width: 770px;
+  margin-inline: auto;
   margin-bottom: 10px;
 }
 .breadcrumb {

@@ -12,7 +12,7 @@ const routes = [
   "perspective-quiz",
   "perspective-resources",
 ];
-test("prelaunch pages remain noindex and schema contains no fabricated claims", () => {
+test("launch pages are indexable and schema contains no fabricated claims", () => {
   for (const route of routes) {
     const html = fs.readFileSync(
       `dist/${route ? route + "/" : ""}index.html`,
@@ -22,7 +22,7 @@ test("prelaunch pages remain noindex and schema contains no fabricated claims", 
       html,
       /FAQPage|aggregateRating|reviewCount|audit\.invalid|\u2014/,
     );
-    assert.match(html, /name="robots" content="noindex"/);
+    assert.doesNotMatch(html, /name="robots" content="noindex"/);
     for (const property of [
       "og:title",
       "og:description",
@@ -37,14 +37,21 @@ test("prelaunch pages remain noindex and schema contains no fabricated claims", 
       if (schema["@graph"]) {
         const entities = schema["@graph"];
         const person = entities.find((entity) => entity["@type"] === "Person");
-        const organization = entities.find((entity) => entity["@type"] === "Organization");
-        const website = entities.find((entity) => entity["@type"] === "WebSite");
+        const organization = entities.find(
+          (entity) => entity["@type"] === "Organization",
+        );
+        const website = entities.find(
+          (entity) => entity["@type"] === "WebSite",
+        );
         assert.equal(person.name, "Bob Wild");
         assert.equal(organization.name, "Who Said Photography");
         assert.equal(website.author["@id"], person["@id"]);
         assert.equal(website.publisher["@id"], organization["@id"]);
         assert.equal(person.affiliation["@id"], organization["@id"]);
-        assert.equal(new Set(organization.sameAs).size, organization.sameAs.length);
+        assert.equal(
+          new Set(organization.sameAs).size,
+          organization.sameAs.length,
+        );
         for (const url of organization.sameAs) {
           assert.equal(new URL(url).protocol, "https:");
           assert.doesNotMatch(url, /[\[\]()]/);
@@ -53,7 +60,10 @@ test("prelaunch pages remain noindex and schema contains no fabricated claims", 
       } else {
         assert.equal(route, "perspective-simulator");
         assert.equal(schema["@type"], "WebApplication");
-        assert.equal(schema.publisher["@id"], "https://whosaidphotography.com/#organization");
+        assert.equal(
+          schema.publisher["@id"],
+          "https://whosaidphotography.com/#organization",
+        );
       }
     }
     const ids = [...html.matchAll(/\sid="([^"]+)"/g)].map((m) => m[1]);

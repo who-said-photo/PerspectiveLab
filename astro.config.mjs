@@ -1,5 +1,5 @@
 import { defineConfig } from "astro/config";
-const site = process.env.SITE_URL;
+const site = process.env.SITE_URL ?? "https://photo-exhibits.com";
 if (
   site &&
   (new URL(site).protocol !== "https:" ||
