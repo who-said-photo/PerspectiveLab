@@ -33,7 +33,7 @@ npm run preview
 - Configuration: `wrangler.toml`, static Pages output; no server adapter or bindings.
 - Set `SITE_URL` to the confirmed HTTPS production origin before a release build. Example PowerShell: `$env:SITE_URL = 'https://your-confirmed-domain.example'` (replace this example).
 
-The production origin defaults to `https://photo-exhibits.com`; `SITE_URL` can override it for another HTTPS origin. Builds include canonical and Open Graph URLs plus a populated sitemap. All nine routes are directory-style static pages. Cloudflare serves `404.html` for missing paths, which keeps its 404/noindex response and returns visitors to the homepage with a browser redirect. Security headers apply site-wide and fingerprinted assets have immutable caching. HTML uses the host's default caching.
+The production origin defaults to `https://photo-exhibit.com`; `SITE_URL` can override it for another HTTPS origin. Builds include canonical and Open Graph URLs plus a populated sitemap. All nine routes are directory-style static pages. Cloudflare serves `404.html` for missing paths, which keeps its 404/noindex response and returns visitors to the homepage with a browser redirect. Security headers apply site-wide and fingerprinted assets have immutable caching. HTML uses the host's default caching.
 
 Cloudflare reference: https://developers.cloudflare.com/pages/framework-guides/deploy-an-astro-site/
 Astro configuration: https://docs.astro.build/en/guides/configuring-astro/
