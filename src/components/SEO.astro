@@ -11,7 +11,7 @@ const canonical = Astro.site
   : undefined;
 ---
 
-<title>{title === "Photography Perspective Lab" ? title : `${title} | Photography Perspective Lab`}</title>
+<title>{title.startsWith("Photography Perspective Lab") ? title : `${title} | Photography Perspective Lab`}</title>
 <meta name="description" content={description} />
 {canonical && <link rel="canonical" href={canonical} />}
 {noindex && <meta name="robots" content="noindex" />}
