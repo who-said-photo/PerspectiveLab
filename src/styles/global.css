@@ -71,23 +71,17 @@ h3 {
 }
 .brand {
   display: block;
-  position: relative;
-  width: 315px;
+  width: 280px;
   max-width: 75%;
   flex-shrink: 1;
-  aspect-ratio: 5 / 1;
-  overflow: hidden;
   text-decoration: none;
   font-weight: 650;
   line-height: 1.25;
 }
 .brand img {
   display: block;
-  position: absolute;
   width: 100%;
   height: auto;
-  top: 50%;
-  transform: translateY(-50%);
 }
 .desktop-nav {
   display: flex;
@@ -168,6 +162,7 @@ h3 {
 .depth-study-image {
   min-width: 0;
   width: 100%;
+  max-width: 560px;
   justify-self: center;
   align-self: center;
 }
@@ -398,7 +393,7 @@ main:focus {
     padding-block: 12px;
   }
   .brand {
-    width: 240px;
+    width: 220px;
     max-width: calc(100% - 94px);
   }
   .mobile-nav {
