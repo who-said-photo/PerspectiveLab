@@ -6,11 +6,21 @@ interface Props {
   title: string;
   description: string;
   category?: string;
+  article?: boolean;
 }
-const { title, description, category = "Field notes" } = Astro.props;
+const {
+  title,
+  description,
+  category = "Field notes",
+  article = true,
+} = Astro.props;
 ---
 
-<BaseLayout title={title} description={description}>
+<BaseLayout
+  title={title}
+  description={description}
+  article={article ? { title, description, section: category } : undefined}
+>
   <Breadcrumb title={title} />
   <div class="lesson-grid">
     <article>

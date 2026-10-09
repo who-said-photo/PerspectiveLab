@@ -9,6 +9,7 @@ interface Props {
   description: string;
   noindex?: boolean;
   redirectTo?: string;
+  article?: { title: string; description: string; section: string };
 }
 ---
 
@@ -18,7 +19,7 @@ interface Props {
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <SEO {...Astro.props} />
-    {!Astro.props.noindex && <SiteSchema />}
+    {!Astro.props.noindex && <SiteSchema article={Astro.props.article} />}
   </head>
   <body>
     <Header />

@@ -1,4 +1,11 @@
 ---
+interface Props {
+  article?: { title: string; description: string; section: string };
+}
+const { article } = Astro.props;
+const canonical = Astro.site
+  ? new URL(Astro.url.pathname, Astro.site).href
+  : undefined;
 const organizationId = "https://whosaidphotography.com/#organization";
 const personId = "https://whosaidphotography.com/#person";
 const website = {
@@ -17,6 +24,27 @@ const schema = {
   "@context": "https://schema.org",
   "@graph": [
     website,
+    ...(article
+      ? [
+          {
+            "@type": "Article",
+            headline: article.title,
+            description: article.description,
+            articleSection: article.section,
+            inLanguage: "en-CA",
+            author: { "@id": personId },
+            publisher: { "@id": organizationId },
+            ...(canonical && Astro.site
+              ? {
+                  "@id": `${canonical}#article`,
+                  url: canonical,
+                  mainEntityOfPage: { "@type": "WebPage", "@id": canonical },
+                  isPartOf: { "@id": new URL("#website", Astro.site).href },
+                }
+              : {}),
+          },
+        ]
+      : []),
     {
       "@type": "Person",
       "@id": personId,
